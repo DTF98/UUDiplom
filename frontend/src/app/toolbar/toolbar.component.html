@@ -1,1 +1,22 @@
-<p>toolbar works!</p>
+<div *ngIf="deviceState" class="d-flex justify-content-center gap-5">
+    <div class="d-flex align-items-center">
+        <img src="/assets/lightning.svg" height="75" width="75" alt="lightning">
+        <h3>Powerly</h3>
+    </div>
+    <div class="d-flex gap-3 align-items-center">
+        <button (click)="updateDeviceState()" type="button" class="btn btn-primary" [disabled]="requestInProgress">
+            {{ deviceState.enabled ? "Выключить" : "Включить" }}
+        </button>
+        <mat-form-field class="load-kinds-combobox">
+            <mat-label>Нагрузка</mat-label>
+            <mat-select [(value)]="selectedLoadKind">
+                @for (kind of deviceLoadKinds; track kind) {
+                    <mat-option [value]="kind">{{kind + " Ом"}}</mat-option>
+                }
+            </mat-select>
+        </mat-form-field>
+        <button (click)="loadNewPoints()" type="button" class="btn btn-primary" [disabled]="requestInProgress || !deviceState.enabled">
+            Снять данные
+        </button>
+    </div>
+</div>

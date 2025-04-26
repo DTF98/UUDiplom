@@ -1,0 +1,11 @@
+<mat-sidenav-container class="container-fluid p-3">
+    <mat-sidenav-content class="d-flex flex-column">
+        <app-toolbar (loadNewDevicePoints)="loadDevicePoints($event)" (loadDeviceState)="loadDeviceState()"
+                     [requestInProgress]="requestInProgress"
+                     [deviceState]=deviceState></app-toolbar>
+        <div class="d-flex flex-grow-1 pt-5">
+            <app-chart [points]="devicePoints.amperagePoints" yAxisTitle="I(t)" lineColorHex="#C11C84" class="w-50"></app-chart>
+            <app-chart [points]="devicePoints.voltagePoints" yAxisTitle="U(t)" lineColorHex="#82C8E5" class="w-50"></app-chart>
+        </div>
+    </mat-sidenav-content>
+</mat-sidenav-container>
