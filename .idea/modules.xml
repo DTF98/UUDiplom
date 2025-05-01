@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/UUDiplom.iml" filepath="$PROJECT_DIR$/.idea/UUDiplom.iml" />
+      <module fileurl="file://$PROJECT_DIR$/DTF.UU.iml" filepath="$PROJECT_DIR$/DTF.UU.iml" />
     </modules>
   </component>
 </project>
