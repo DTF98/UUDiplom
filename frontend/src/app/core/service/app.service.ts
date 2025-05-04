@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, of, timeout } from 'rxjs';
 import { DeviceState } from '../domain/device-state';
@@ -13,32 +13,33 @@ export class AppService {
     }
 
     loadDeviceState(): Observable<DeviceState> {
-        return of({
-            enabled: true
-        })
-        // return this.httpClient.get<DeviceState>(`http://localhost:8080/api/load-device-state`);
+        // return of({
+        //     enabled: true
+        // })
+        return this.httpClient.get<DeviceState>(`http://localhost:8080/api/load-device-state`);
     }
 
     loadDevicePoints(deviceLoadKind: number): Observable<DevicePoints> {
-        return of({
-            amperagePoints: [
-                { time: new Date(1000), value: (Math.random()+1)*100 },
-                { time: new Date(2000), value: (Math.random()+1)*100 },
-                { time: new Date(3000), value: (Math.random()+1)*100 },
-                { time: new Date(4000), value: (Math.random()+1)*100 },
-                { time: new Date(5000), value: (Math.random()+1)*100 }
-            ],
-            voltagePoints: [
-                { time: new Date(1000), value: (Math.random()+1)*100 },
-                { time: new Date(2000), value: (Math.random()+1)*100 },
-                { time: new Date(3000), value: (Math.random()+1)*100 },
-                { time: new Date(4000), value: (Math.random()+1)*100 },
-                { time: new Date(5000), value: (Math.random()+1)*100 }
-            ]
-        });
-        // const params = new HttpParams();
-        // params.set('deviceLoadKind', deviceLoadKind);
-        // return this.httpClient.get<DevicePoints>(`http://localhost:8080/api/load-chart-points`, {params: params});
+        // return of({
+        //     amperagePoints: [
+        //         { time: new Date(1000), value: (Math.random()+1)*100 },
+        //         { time: new Date(2000), value: (Math.random()+1)*100 },
+        //         { time: new Date(3000), value: (Math.random()+1)*100 },
+        //         { time: new Date(4000), value: (Math.random()+1)*100 },
+        //         { time: new Date(5000), value: (Math.random()+1)*100 }
+        //     ],
+        //     voltagePoints: [
+        //         { time: new Date(1000), value: (Math.random()+1)*100 },
+        //         { time: new Date(2000), value: (Math.random()+1)*100 },
+        //         { time: new Date(3000), value: (Math.random()+1)*100 },
+        //         { time: new Date(4000), value: (Math.random()+1)*100 },
+        //         { time: new Date(5000), value: (Math.random()+1)*100 }
+        //     ],
+        //     load: 123
+        // });
+        const params = new HttpParams();
+        params.set('deviceLoadKind', deviceLoadKind);
+        return this.httpClient.get<DevicePoints>(`http://localhost:8080/api/load-chart-points`, {params: params});
     }
 
 }

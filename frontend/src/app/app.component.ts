@@ -6,10 +6,11 @@ import { ChartComponent } from './chart/chart.component';
 import { AppService } from './core/service/app.service';
 import { DevicePoints } from './core/domain/device-points';
 import { finalize } from 'rxjs';
+import { NgIf } from '@angular/common';
 
 @Component({
     selector: 'app-root',
-    imports: [ToolbarComponent, MatSidenavContainer, ChartComponent, MatSidenavContent],
+    imports: [ToolbarComponent, MatSidenavContainer, ChartComponent, MatSidenavContent, NgIf],
     templateUrl: './app.component.html',
     styleUrl: './app.component.scss',
     standalone: true
