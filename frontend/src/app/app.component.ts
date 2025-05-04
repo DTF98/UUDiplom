@@ -36,11 +36,7 @@ export class AppComponent {
         this.requestInProgress = true;
         this.appService.loadDevicePoints(loadKind).pipe(
             finalize(() => this.requestInProgress = false)
-        ).subscribe(devicePoints => {
-            devicePoints.voltagePoints.forEach(p => p.time = new Date(p.time));
-            devicePoints.amperagePoints.forEach(p => p.time = new Date(p.time));
-            return this.devicePoints = devicePoints;
-        });
+        ).subscribe(devicePoints => this.devicePoints = devicePoints);
     }
 
     loadDeviceState() {

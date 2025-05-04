@@ -1,4 +1,4 @@
 export interface ValuePoint {
-    time: Date;
+    millis: number;
     value: number;
 }

@@ -24,7 +24,7 @@ export class ChartComponent implements AfterViewInit {
     set points(points: ValuePoint[]) {
         this._points = points;
         if (this.chart) {
-            this.chart.data.datasets[0].data = points.map(p => ({x: p.time.getTime(), y: p.value}));
+            this.chart.data.datasets[0].data = points.map(p => ({x: p.millis, y: p.value}));
             this.chart.update();
         }
     }
@@ -42,7 +42,7 @@ export class ChartComponent implements AfterViewInit {
 
             data: {
                 datasets: [{
-                    data: this._points.map(p => ({x: p.time.getTime(), y: p.value})),
+                    data: this._points.map(p => ({x: p.millis, y: p.value})),
                     fill: false,
                     borderColor: this.lineColorHex
                 }]
@@ -67,7 +67,7 @@ export class ChartComponent implements AfterViewInit {
                         },
                         title: {
                             display: true,
-                            text: 'Время',
+                            text: 'Время, мс',
                             font: {
                                 size: 20
                             }
