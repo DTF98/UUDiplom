@@ -4,5 +4,5 @@ import DTF.UU.model.ValuePoint;
 
 import java.util.List;
 
-public record CurrentAndVoltage(List<ValuePoint> current, List<ValuePoint> voltage) {
+public record CurrentAndVoltage(List<ValuePoint> current, List<ValuePoint> voltage, int load) {
 }
