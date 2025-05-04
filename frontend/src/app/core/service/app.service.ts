@@ -37,9 +37,7 @@ export class AppService {
         //     ],
         //     load: 123
         // });
-        const params = new HttpParams();
-        params.set('deviceLoadKind', deviceLoadKind);
-        return this.httpClient.get<DevicePoints>(`http://localhost:8080/api/load-chart-points`, {params: params});
+        return this.httpClient.post<DevicePoints>(`http://localhost:8080/api/load-chart-points`,
+            JSON.stringify(deviceLoadKind), { headers: { 'Content-Type': 'application/json' } });
     }
-
 }
